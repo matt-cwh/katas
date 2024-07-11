@@ -16,9 +16,13 @@ public static class FenwickTree
 
     public static void Update(int[] tree, int index, int value)
     {
+        // We get the value of current sum and subtract the sum with index-1 to get the actual value
+        var currentValue = Get(tree, index)-Get(tree, index-1);
+        var diff = value - currentValue;
+
         for (int i = index + 1; i <= tree.Length; i += (i & -i))
         {
-            tree[i - 1] += value;
+            tree[i - 1] += diff;
         }
     }
 

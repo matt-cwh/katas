@@ -6,6 +6,7 @@ public class FenwickTreeTests
     [InlineData("0,0,0,0,0,0,0,0", "5,5,0,5,0,0,0,5", 0, 5)]
     [InlineData("5,5,0,5,0,0,0,5", "5,5,2,7,0,0,0,7", 2, 2)]
     [InlineData("5,5,2,7,0,0,0,7", "5,5,2,7,4,4,0,11", 4, 4)]
+    [InlineData("5,5,2,7,4,4,0,11", "5,5,2,7,7,7,0,14", 4, 7)]
     public void Update_Should_Update_Index_Value_And_Parents(string original, string expected, int i, int v)
     {
         var tree = original.Split(',').Select(x => int.Parse(x)).ToArray();
@@ -25,6 +26,5 @@ public class FenwickTreeTests
 
          var sum= FenwickTree.Get(tree, i);
            Assert.Equal(expected, sum);
-
     }
 }
